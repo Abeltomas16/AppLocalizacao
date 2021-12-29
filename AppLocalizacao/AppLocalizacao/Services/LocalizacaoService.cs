@@ -9,7 +9,7 @@ namespace AppLocalizacao.Services
 {
     public class LocalizacaoService
     {
-        private bool rodando = false;
+        private readonly bool rodando = false;
         public async Task Obter(CancellationToken token)
         {
             await Task.Run(async () =>
