@@ -9,13 +9,44 @@
     
     <ContentPage.BindingContext>
         <vm:ViewModelHome/>
-        
     </ContentPage.BindingContext>
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <StackLayout VerticalOptions="Center">
+        <Button VerticalOptions="CenterAndExpand"
+                Text="comecar servico"
+                Command="{Binding ComecarCommand}"
+                IsEnabled="{Binding ComecarEstado}"/>
+
+        <Button VerticalOptions="CenterAndExpand"
+                Text="Parar servico"
+                Command="{Binding PararCommand}"
+                IsEnabled="{Binding PararEstado}"/>
+
+        <Label Text="Coordinates" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Latitude: "/>
+                        <Span Text="{Binding Latitude}"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Longitude: "/>
+                        <Span Text="{Binding Longitude}"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Text="{Binding Mensagem}" VerticalOptions="CenterAndExpand"/>
+
+    </StackLayout>
+    
 </ContentPage>
