@@ -25,7 +25,7 @@ namespace AppLocalizacao.Services
                         {
                             LocalizacaoMessage localizacao_message = new LocalizacaoMessage
                             {
-                                Latitute = localizacao.Latitude,
+                                Latitude = localizacao.Latitude,
                                 Longitude = localizacao.Longitude
                             };
                             MessagingCenter.Send(localizacao_message, "localizacao");
