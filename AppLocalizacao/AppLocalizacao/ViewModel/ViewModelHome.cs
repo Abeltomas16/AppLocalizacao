@@ -79,7 +79,18 @@ namespace AppLocalizacao.ViewModel
                 });
             });
         }
-
+        private void Comecar()
+        {
+            start();
+        }
+        public void start()
+        {
+            LocalizacaoIniciar iniciar = new LocalizacaoIniciar();
+            MessagingCenter.Send(iniciar, "localizacaoIniciar");
+            SecureStorage.SetAsync(STATUS_APP, "1");
+            ComecarEstado = false;
+            PararEstado = true;
+        }
         private void Parar()
         {
             LocalizacaoParadaMessage message = new LocalizacaoParadaMessage();
@@ -88,11 +99,22 @@ namespace AppLocalizacao.ViewModel
             ComecarEstado = true;
             PararEstado = false;
         }
+        private void Validar()
+        {
+            var argumento = SecureStorage.GetAsync(STATUS_APP).Result;
+            if (argumento != null && argumento == "1")
+                start();
+        }
         #endregion
 
         public ViewModelHome()
         {
+            ComecarCommand = new Command(() => Comecar());
             PararCommand = new Command(() => Parar());
+            MonitoraMessage();
+            Validar();
+            ComecarEstado = true;
+            PararEstado = false;
         }
     }
 }
