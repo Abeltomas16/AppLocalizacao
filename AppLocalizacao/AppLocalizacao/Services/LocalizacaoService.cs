@@ -16,9 +16,10 @@ namespace AppLocalizacao.Services
             {
                 while (!rodando)
                 {
+                    token.ThrowIfCancellationRequested();
                     try
                     {
-                        var localizacaoRequest = new GeolocationRequest(GeolocationAccuracy.Medium);
+                        var localizacaoRequest = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(2000));
                         var localizacao = await Geolocation.GetLocationAsync(localizacaoRequest);
                         if (localizacao == null) return;
                         Device.BeginInvokeOnMainThread(() =>

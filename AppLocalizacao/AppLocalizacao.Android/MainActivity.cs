@@ -36,17 +36,20 @@ namespace AppLocalizacao.Droid
             {
                 if (!IsServicoRodando(typeof(LocalizacaoActivityService)))
                 {
-                    if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
-                        StartForegroundService(tarefa);
-                    else
-                        StartService(tarefa);
+                    if (!IsServicoRodando(typeof(LocalizacaoActivityService)))
+                    {
+                        if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+                            StartForegroundService(tarefa);
+                        else
+                            StartService(tarefa);
+                    }
                 }
             });
 
             MessagingCenter.Subscribe<LocalizacaoParadaMessage>(this, "localizacaoParada", Message =>
             {
                 if (IsServicoRodando(typeof(LocalizacaoActivityService)))
-                    StopService(Intent);
+                    StopService(tarefa);
             });
         }
 

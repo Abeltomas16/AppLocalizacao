@@ -30,7 +30,7 @@ namespace AppLocalizacao.Droid.Services
                 try
                 {
                     var service_localizacao = new LocalizacaoService();
-                    service_localizacao.Obter(ck.Token).Wait(); ;
+                    service_localizacao.Obter(ck.Token).Wait();
                 }
                 catch (System.OperationCanceledException)
                 {
