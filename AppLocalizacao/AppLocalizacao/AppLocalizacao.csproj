@@ -16,9 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Messages\" />
     <Folder Include="Helper\" />
-    <Folder Include="Services\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
 </Project>
