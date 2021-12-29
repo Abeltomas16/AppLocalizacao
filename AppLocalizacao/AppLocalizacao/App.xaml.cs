@@ -10,7 +10,7 @@ namespace AppLocalizacao
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Home();
         }
 
         protected override void OnStart()
