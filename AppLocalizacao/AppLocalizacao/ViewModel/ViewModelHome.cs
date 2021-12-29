@@ -1,4 +1,5 @@
-﻿using AppLocalizacao.Messages;
+﻿using AppLocalizacao.Contratos;
+using AppLocalizacao.Messages;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +18,7 @@ namespace AppLocalizacao.ViewModel
         private double latitude;
         private double longitude;
         private const string STATUS_APP = "status";
+        ILocalizacaoVerificar LocalizacaoVerificar;
         #endregion
 
         #region propiedades
@@ -109,12 +111,14 @@ namespace AppLocalizacao.ViewModel
 
         public ViewModelHome()
         {
+            LocalizacaoVerificar = DependencyService.Get<ILocalizacaoVerificar>();
             ComecarCommand = new Command(() => Comecar());
             PararCommand = new Command(() => Parar());
             MonitoraMessage();
-            Validar();
+            LocalizacaoVerificar.VerificaPermissao();
             ComecarEstado = true;
             PararEstado = false;
+            Validar();
         }
     }
 }
