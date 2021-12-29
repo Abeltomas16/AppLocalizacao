@@ -14,4 +14,11 @@
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Messages\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
 </Project>
